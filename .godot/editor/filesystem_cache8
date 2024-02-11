@@ -1,0 +1,10 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1707682637
+icon.svg::CompressedTexture2D::5038335006339172857::1707675559::1707675561::1::::<><>::
+Player.gd::GDScript::-1::1707682476::0::1::::<>Area2D<>::
+player.tscn::PackedScene::761354303635975037::1707682637::0::1::::<><>::res://Player.gd<>uid://bvcw2vamupjfg::::res://art/doordasherplayertopdown.png
+main.tscn::PackedScene::8839462121925581425::1707682637::0::1::::<><>::uid://k32nnvq80ww8::::res://player.tscn
+::res://art/::1707683353
+apple.png::CompressedTexture2D::1056256897581365330::1704667246::1707675679::1::::<><>::
+doordasherplayertopdown.png::CompressedTexture2D::3865900249439100044::1707682072::1707682087::1::::<><>::
+doordasherroad.png::CompressedTexture2D::7356995779080751369::1707683348::1707683361::1::::<><>::

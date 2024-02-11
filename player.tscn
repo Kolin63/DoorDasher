@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://k32nnvq80ww8"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_c10qi"]
+[ext_resource type="Texture2D" uid="uid://bvcw2vamupjfg" path="res://art/doordasherplayertopdown.png" id="2_q442x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kldxr"]
+atlas = ExtResource("2_q442x")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktwn8"]
+atlas = ExtResource("2_q442x")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnhw5"]
+atlas = ExtResource("2_q442x")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s54c"]
+atlas = ExtResource("2_q442x")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7e51"]
+atlas = ExtResource("2_q442x")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13jyi"]
+atlas = ExtResource("2_q442x")
+region = Rect2(800, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wkxk"]
+atlas = ExtResource("2_q442x")
+region = Rect2(960, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvb5y"]
+atlas = ExtResource("2_q442x")
+region = Rect2(1120, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ijma0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kldxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktwn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnhw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s54c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7e51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13jyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wkxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvb5y")
+}],
+"loop": true,
+"name": &"topdown",
+"speed": 7.5
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_akwtf"]
+radius = 43.0
+height = 120.0
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_c10qi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(7, -3)
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_ijma0")
+animation = &"topdown"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_akwtf")
