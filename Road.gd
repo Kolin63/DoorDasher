@@ -1,5 +1,5 @@
 extends Sprite2D
-@export var speed = 400
+var speed = 800
 
 func _ready():
 	position = Vector2(576, 324)

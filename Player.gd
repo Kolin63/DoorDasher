@@ -44,13 +44,12 @@ func subwayMove(delta):
 	if Input.is_action_just_pressed("move_left"):
 		lane -= 1
 	
-	if lane > 0:
-		lane = 1
-		position.x = 960
 	if lane < 0:
 		lane = -1
 		position.x = 192
 	if lane == 0:
 		position.x = 576
-	
+	if lane > 0:
+		lane = 1
+		position.x = 960
 	

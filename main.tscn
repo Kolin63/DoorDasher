@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx65wdbjrhkt2"]
+[gd_scene load_steps=5 format=3 uid="uid://dx65wdbjrhkt2"]
 
 [ext_resource type="PackedScene" uid="uid://k32nnvq80ww8" path="res://player.tscn" id="1_xg5qi"]
 [ext_resource type="Texture2D" uid="uid://dc21v7ldedn0l" path="res://art/doordasherroad.png" id="2_w24fo"]
 [ext_resource type="Script" path="res://Road.gd" id="3_10xwq"]
+[ext_resource type="PackedScene" uid="uid://d0w857be58eqa" path="res://car.tscn" id="4_7jpv8"]
 
 [node name="Road" type="Node2D"]
 
@@ -15,4 +16,5 @@ position = Vector2(576, 524)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("2_w24fo")
 script = ExtResource("3_10xwq")
-speed = 800
+
+[node name="Car" parent="." instance=ExtResource("4_7jpv8")]
