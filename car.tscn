@@ -18,3 +18,5 @@ texture = ExtResource("2_ftx6x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_e6eya")
+
+[node name="Poopiepants" type="Area2D" parent="."]
