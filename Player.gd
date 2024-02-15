@@ -52,4 +52,12 @@ func subwayMove(delta):
 	if lane > 0:
 		lane = 1
 		position.x = 960
-	
+func die():
+	queue_free()
+
+
+
+
+func _on_area_2d_area_entered(area):
+	if area.name=="Car":
+		self.die()

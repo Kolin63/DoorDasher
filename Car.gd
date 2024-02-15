@@ -17,3 +17,4 @@ func _ready():
 
 func _process(delta):
 	position.y += 800 * delta
+
