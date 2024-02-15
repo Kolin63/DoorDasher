@@ -1,10 +1,10 @@
 extends Area2D
-var speed = 400
+var speed = 800
+var lane = 0
 
 func _ready():
 	position.y = -105
-	
-	var lane = randi_range(-1, 1)
+	lane = randi_range(-1, 1)
 	if lane < 0:
 		lane = -1
 		position.x = 192
@@ -14,7 +14,7 @@ func _ready():
 		lane = 1
 		position.x = 960
 
-
 func _process(delta):
-	position.y += 800 * delta
+	position.y += speed * delta
+	
 

@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx65wdbjrhkt2"]
+[gd_scene load_steps=6 format=3 uid="uid://dx65wdbjrhkt2"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_rnxtu"]
 [ext_resource type="PackedScene" uid="uid://k32nnvq80ww8" path="res://player.tscn" id="1_xg5qi"]
 [ext_resource type="Texture2D" uid="uid://dc21v7ldedn0l" path="res://art/doordasherroad.png" id="2_w24fo"]
 [ext_resource type="Script" path="res://Road.gd" id="3_10xwq"]
 [ext_resource type="PackedScene" uid="uid://d0w857be58eqa" path="res://car.tscn" id="4_7jpv8"]
 
 [node name="Road" type="Node2D"]
+script = ExtResource("1_rnxtu")
 
 [node name="Player" parent="." instance=ExtResource("1_xg5qi")]
 position = Vector2(569, 529)
@@ -18,3 +20,7 @@ texture = ExtResource("2_w24fo")
 script = ExtResource("3_10xwq")
 
 [node name="Car" parent="." instance=ExtResource("4_7jpv8")]
+
+[node name="CarSpawnTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="CarSpawnTimer" to="." method="_on_car_spawn_timer_timeout"]

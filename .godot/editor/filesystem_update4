@@ -1,1 +1,7 @@
+res://main.tscn
+res://player.tscn
 res://car.tscn
+res://Car.gd
+res://CarSpawnTimer.gd
+res://main.gd
+res://Player.gd

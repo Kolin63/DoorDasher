@@ -3,9 +3,11 @@ var velocity
 var speed = 400
 var subwaySurfers = true
 var lane = 0
+var laneOffset = 0
 
 
 func _ready():
+	$AnimatedSprite2D.animation = "straight"
 	$AnimatedSprite2D.play()
 	
 
@@ -13,26 +15,9 @@ func _ready():
 func _process(delta):
 	if subwaySurfers:
 		subwayMove(delta)
-	else:
-		normalMove(delta)
-
-
-func normalMove(delta):
-	velocity = Vector2.ZERO
 	
-	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
-	if Input.is_action_pressed("move_down"):
-		velocity.y += 1
-	
-	if velocity.length() > 0:
-		velocity = velocity.normalized()
-	
-	position += velocity * speed * delta
+	if $AnimatedSprite2D.frame == 7 && $AnimatedSprite2D.animation != "death":
+		$AnimatedSprite2D.animation = "straight"
 	
 	
 func subwayMove(delta):
@@ -40,9 +25,13 @@ func subwayMove(delta):
 	position.x = 530
 	
 	if Input.is_action_just_pressed("move_right"):
+		$AnimatedSprite2D.animation = "right"
 		lane += 1
+		laneOffset = -384
 	if Input.is_action_just_pressed("move_left"):
+		$AnimatedSprite2D.animation = "left"
 		lane -= 1
+		laneOffset = 384
 	
 	if lane < 0:
 		lane = -1
@@ -52,6 +41,16 @@ func subwayMove(delta):
 	if lane > 0:
 		lane = 1
 		position.x = 960
+	position.x += laneOffset
+	
+	if laneOffset > 0:
+		laneOffset -= 50
+		if laneOffset < 0:
+			laneOffset = 0
+	if laneOffset < 0:
+		laneOffset += 50
+		if laneOffset > 0:
+			laneOffset = 0
 func die():
 	queue_free()
 
