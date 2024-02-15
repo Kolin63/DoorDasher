@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvuka81232cep"]
+
+[ext_resource type="Texture2D" uid="uid://ci1s6n8oess0n" path="res://art/Backyard2.png" id="1_vpxii"]
+
+[node name="Backyard2" type="Sprite2D"]
+position = Vector2(482, 319)
+texture = ExtResource("1_vpxii")
