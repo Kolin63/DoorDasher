@@ -1,7 +1,8 @@
+res://Car.gd
 res://main.tscn
 res://player.tscn
 res://car.tscn
-res://Car.gd
-res://CarSpawnTimer.gd
-res://main.gd
-res://Player.gd
+res://FirstBossFight.tscn
+res://BossFightTwo.tscn
+res://BossFight3.tscn
+res://death_scene.tscn
