@@ -258,6 +258,8 @@ height = 120.0
 size = Vector2(146, 132)
 
 [node name="Player" type="Area2D"]
+z_index = 1
+rotation = -1.5708
 script = ExtResource("1_c10qi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

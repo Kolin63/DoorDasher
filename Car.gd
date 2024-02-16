@@ -1,20 +1,18 @@
 extends Area2D
-var speed = 800
-var lane = 0
+var speed = 500
+var _lane
+signal death(carLane)
 
-func _ready():
-	position.y = -105
-	lane = randi_range(-1, 1)
-	if lane < 0:
-		lane = -1
-		position.x = 192
-	if lane == 0:
-		position.x = 576
-	if lane > 0:
-		lane = 1
-		position.x = 960
+
+func set_lane(value):
+	_lane = value
+
 
 func _process(delta):
-	position.y += speed * delta
 	
-
+	position.x += speed * delta
+	
+	if position.x >= 900 && position.x < 910:
+		death.emit(_lane)
+	elif position.x > 1300:
+		queue_free()

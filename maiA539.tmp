@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Road.gd" id="3_10xwq"]
 [ext_resource type="PackedScene" uid="uid://d0w857be58eqa" path="res://car.tscn" id="4_7jpv8"]
 
-[node name="Main" type="Node2D"]
+[node name="Road" type="Node2D"]
 script = ExtResource("1_rnxtu")
 
 [node name="Player" parent="." instance=ExtResource("1_xg5qi")]
@@ -25,5 +25,5 @@ script = ExtResource("3_10xwq")
 
 [connection signal="playerDied" from="Player" to="Road" method="_on_player_player_died"]
 [connection signal="playerDied" from="Player" to="Car" method="_on_player_player_died"]
-[connection signal="death" from="Car" to="." method="_on_car_death"]
+[connection signal="death" from="Car" to="Player" method="_on_car_death"]
 [connection signal="timeout" from="CarSpawnTimer" to="." method="_on_car_spawn_timer_timeout"]

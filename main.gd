@@ -7,13 +7,26 @@ func _ready():
 	$CarSpawnTimer.start()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_car_spawn_timer_timeout():
-	print("new car")
 	var car = car_scene.instantiate()
+	car.visible = true
+	car.position.x = -105
+	car.set_lane(randi_range(-1, 1))
+	if car._lane < 0:
+		car._lane = -1
+		car.position.y = 540
+	elif car._lane == 0:
+		car.position.y = 324
+	elif car._lane > 0:
+		car._lane = 1
+		car.position.y = 108
+	
 	add_child(car)
+	car.death.connect(_on_car_death)
 
+
+
+func _on_car_death(carLane):
+	if carLane == $Player.lane:
+		$Road.speed = 0
+		$Player/AnimatedSprite2D.animation = "death"

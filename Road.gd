@@ -1,11 +1,11 @@
 extends Sprite2D
-var speed = 800
+var speed = 500
 
 func _ready():
-	position = Vector2(576, 324)
+	position = Vector2(483, 324)
 
 func _process(delta):
-	position.y += speed * delta
+	position.x += speed * delta
 	
-	if position.y >= 524:
-		position.y = 324
+	if position.x >= 642:
+		position.x = 483
