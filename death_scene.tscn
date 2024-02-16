@@ -3,5 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://d2ii7xhyuci8n" path="res://art/DeathScene.png" id="1_ad4rk"]
 
 [node name="DeathScene" type="Sprite2D"]
-position = Vector2(480, 316)
+position = Vector2(572, 344)
+scale = Vector2(1.24, 1.24)
 texture = ExtResource("1_ad4rk")

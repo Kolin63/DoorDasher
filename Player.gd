@@ -1,7 +1,6 @@
 extends Area2D
 var velocity
 var speed = 400
-var subwaySurfers = true
 var lane = 0
 var laneOffset = 0
 signal playerDied
@@ -14,9 +13,6 @@ func _ready():
 
 
 func _process(delta):
-	if subwaySurfers:
-		subwayMove()
-	
 	if $AnimatedSprite2D.frame == 7 && $AnimatedSprite2D.animation != "death":
 		$AnimatedSprite2D.animation = "straight"
 	
@@ -24,6 +20,7 @@ func _process(delta):
 func subwayMove():
 	velocity = Vector2.ZERO
 	position.x = 960
+	
 	
 	if Input.is_action_just_pressed("move_up"):
 		$AnimatedSprite2D.animation = "right"

@@ -5,7 +5,8 @@ res://FirstBossFight.tscn
 res://BossFightTwo.tscn
 res://BossFight3.tscn
 res://death_scene.tscn
-res://Road.gd
-res://Player.gd
-res://Car.gd
 res://main.gd
+res://road.tscn
+res://Player.gd
+res://road.gd
+res://RoadSprite.gd
