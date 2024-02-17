@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://e1knbhhpvaa"]
+
+[ext_resource type="Texture2D" uid="uid://cjv60g8c0cskt" path="res://art/Pinnaple.png" id="1_g0prk"]
+
+[node name="Area2D" type="Area2D"]
+
+[node name="Pinnaple" type="Sprite2D" parent="."]
+position = Vector2(110, 170)
+texture = ExtResource("1_g0prk")

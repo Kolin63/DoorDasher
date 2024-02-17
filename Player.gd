@@ -39,7 +39,7 @@ func subwayMove(delta):
 	if lane == 0:
 		position.x = 576
 	if lane > 0:
-		lane = 1
+		lane = 1    
 		position.x = 960
 	position.x += laneOffset
 	
@@ -51,12 +51,8 @@ func subwayMove(delta):
 		laneOffset += 50
 		if laneOffset > 0:
 			laneOffset = 0
-func die():
-	queue_free()
 
 
 
 
-func _on_area_2d_area_entered(area):
-	if area.name=="Car":
-		self.die()
+

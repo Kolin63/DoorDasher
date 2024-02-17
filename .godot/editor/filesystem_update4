@@ -5,3 +5,6 @@ res://FirstBossFight.tscn
 res://BossFightTwo.tscn
 res://BossFight3.tscn
 res://death_scene.tscn
+res://default_bus_layout.tres
+res://Player.gd
+res://Car.gd

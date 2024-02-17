@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsso7kqv0qyp3"]
+
+[ext_resource type="Texture2D" uid="uid://dkfj16aw46crj" path="res://art/fatguy.png" id="1_2u2v4"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+
+[node name="Fatguy" type="Sprite2D" parent="."]
+position = Vector2(316, 295)
+texture = ExtResource("1_2u2v4")
