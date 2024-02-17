@@ -11,6 +11,7 @@ var pineapples_top = 0
 var pineapples_middle = 0
 var pineapples_bottom = 0
 var time_since_last_shot = 0
+var dialouge_stage = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +23,7 @@ func _ready():
 	distanceTimeSeconds = 0.0
 	distanceMaxSeconds = 30  
 	$Dog.play()
+	dialouge_stage = 0
 
 
 func _process(delta):
@@ -38,14 +40,20 @@ func after_dialouge(delta):
 	$ProgressBar/ColorRect.size.y = distanceTimeSeconds / distanceMaxSeconds * 540
 	
 	if distanceTimeSeconds >= distanceMaxSeconds:
+		
 		$Dog.stop()
 		$Dog.lane = 0
 		$RoadSprite.speed = 0
 		$Dialouge.show_dialouge()
-		$Dialouge.say("Pizza Police", "The pineapples...\nThey are too strong...\nI can't handle it anymore.")
+		if dialouge_stage == 0:
+			$Dialouge.say("Pizza Police", "The pineapples...\nThey are too strong...\nI can't handle it anymore.")
+		elif dialouge_stage == 1:
+			$Dialouge.say("", "All orders completed.\nHave a great day!")
+		elif dialouge_stage >= 2:
+			road_complete.emit()
 		$Player/AnimatedSprite2D.stop()
 		if Input.is_action_just_pressed("left_click"):
-			road_complete.emit()
+			dialouge_stage += 1
 	
 	
 	if distanceTimeSeconds <= distanceMaxSeconds && playerAlive:
