@@ -37,7 +37,9 @@ func after_dialouge(delta):
 	if distanceTimeSeconds >= distanceMaxSeconds - 7:
 		$CarSpawnTimer.stop()
 	if distanceTimeSeconds >= distanceMaxSeconds:
-		road_complete.emit()
+		$Dialouge.say("", "Destination Arrived!")
+		if Input.is_action_just_pressed("left_click"):
+			road_complete.emit()
 		
 	
 	

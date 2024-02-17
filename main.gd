@@ -106,6 +106,7 @@ func _on_load_police():
 	scene = police_scene.instantiate()
 	add_child(scene)
 	scene.road_complete.connect(_on_road_complete)
+	scene.playerDied.connect(_on_load_death)
 
 
 func _on_load_police_greeting():
@@ -119,6 +120,7 @@ func _on_load_death():
 	clear_scene()
 	scene = death_scene.instantiate()
 	add_child(scene)
+	scene.load_road.connect(_on_load_road)
 
 
 func _on_load_menu():

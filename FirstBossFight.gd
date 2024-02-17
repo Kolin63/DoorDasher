@@ -9,6 +9,7 @@ signal road_complete
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Dog.play()
 	$Dialouge.hide_dialouge()
 	playerAlive = true
 	distanceTimeSeconds = 0

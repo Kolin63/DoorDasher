@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://38e8f1ejd7wu"]
+[gd_scene load_steps=3 format=3 uid="uid://38e8f1ejd7wu"]
 
 [ext_resource type="Texture2D" uid="uid://d2ii7xhyuci8n" path="res://art/DeathScene.png" id="1_ad4rk"]
+[ext_resource type="Script" path="res://death_scene.gd" id="2_6i2s4"]
 
 [node name="DeathScene" type="Sprite2D"]
 position = Vector2(572, 344)
 scale = Vector2(1.24, 1.24)
 texture = ExtResource("1_ad4rk")
+script = ExtResource("2_6i2s4")
