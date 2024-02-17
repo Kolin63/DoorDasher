@@ -10,3 +10,6 @@ res://road.tscn
 res://Player.gd
 res://road.gd
 res://RoadSprite.gd
+res://Main.gd
+res://menu.tscn
+res://menu.gd

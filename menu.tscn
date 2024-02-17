@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://85rppqt177jy"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_ggmgi"]
+
+[node name="menu" type="Node2D"]
+script = ExtResource("1_ggmgi")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 473.0
+offset_top = 77.0
+offset_right = 731.0
+offset_bottom = 120.0
+text = "among us sussy baka"
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 533.0
+offset_top = 267.0
+offset_right = 579.0
+offset_bottom = 298.0
+text = "Start"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

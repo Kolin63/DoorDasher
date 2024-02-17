@@ -40,9 +40,11 @@ offset_bottom = 800.0
 rotation = 3.14159
 color = Color(0, 0.831373, 0.00392157, 1)
 
-[node name="SceneTransitionTimer" type="Timer" parent="."]
+[node name="DeathTransitionTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="playerDied" from="Player" to="RoadSprite" method="_on_player_player_died"]
 [connection signal="playerDied" from="Player" to="Car" method="_on_player_player_died"]
 [connection signal="death" from="Car" to="." method="_on_car_death"]
 [connection signal="timeout" from="CarSpawnTimer" to="." method="_on_car_spawn_timer_timeout"]
+[connection signal="timeout" from="DeathTransitionTimer" to="." method="_on_death_transition_timer_timeout"]

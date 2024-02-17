@@ -3,6 +3,7 @@ var car_scene = preload("res://car.tscn")
 var distanceTimeSeconds
 var distanceMaxSeconds
 var playerAlive
+signal playerDied
 
 
 # Called when the node enters the scene tree for the first time.
@@ -47,3 +48,9 @@ func _on_car_death(carLane):
 		$RoadSprite.speed = 0
 		$Player/AnimatedSprite2D.animation = "death"
 		playerAlive = false
+		$DeathTransitionTimer.start()
+
+
+func _on_death_transition_timer_timeout():
+	print("rmeitijeitm")
+	playerDied.emit()
