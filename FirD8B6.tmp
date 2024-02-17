@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://da6c3hmwhwm68"]
+
+[ext_resource type="Script" path="res://FirstBossFight.gd" id="2_5lf00"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8lta"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"door",
+"speed": 5.0
+}]
+
+[node name="Backyard1" type="AnimatedSprite2D"]
+position = Vector2(141, 258)
+scale = Vector2(2.85417, 7.9375)
+sprite_frames = SubResource("SpriteFrames_i8lta")
+animation = &"door"
+script = ExtResource("2_5lf00")
