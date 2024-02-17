@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://hru5hfubeh6y"]
+
+[ext_resource type="Texture2D" uid="uid://cavphdjxqx4fk" path="res://art/doggy-Sheet.png" id="1_4h15q"]
+[ext_resource type="Script" path="res://dog_greeting.gd" id="1_mi1ua"]
+[ext_resource type="Texture2D" uid="uid://dv3kioxvtb52s" path="res://art/Backyard1.png" id="3_kfmuq"]
+[ext_resource type="Texture2D" uid="uid://v4pvx7d1ytml" path="res://art/roadsideways.png" id="3_m20fd"]
+[ext_resource type="PackedScene" uid="uid://bloh6tls47nr6" path="res://dialouge.tscn" id="4_4aw3g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hk2a"]
+atlas = ExtResource("1_4h15q")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d086c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hk2a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DogGreeting" type="Node2D"]
+script = ExtResource("1_mi1ua")
+
+[node name="Dog" type="AnimatedSprite2D" parent="."]
+position = Vector2(450, 349)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_d086c")
+
+[node name="DoorLeft" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(576, 349)
+scale = Vector2(0.766667, 1.265)
+texture = ExtResource("3_m20fd")
+
+[node name="DoorRight" type="Sprite2D" parent="."]
+z_index = 6
+position = Vector2(872, 349)
+scale = Vector2(0.589583, 1.265)
+texture = ExtResource("3_kfmuq")
+
+[node name="Dialouge" parent="." instance=ExtResource("4_4aw3g")]
+z_index = 24

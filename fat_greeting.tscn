@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://beauwempgsj34"]
+
+[ext_resource type="Texture2D" path="res://art/fatguy.png" id="1_1e2vk"]
+[ext_resource type="Script" path="res://fat_greeting.gd" id="1_dd1oj"]
+[ext_resource type="Texture2D" uid="uid://v4pvx7d1ytml" path="res://art/roadsideways.png" id="2_w7mbn"]
+[ext_resource type="Texture2D" uid="uid://dv3kioxvtb52s" path="res://art/Backyard1.png" id="3_taic8"]
+[ext_resource type="PackedScene" uid="uid://bloh6tls47nr6" path="res://dialouge.tscn" id="5_vg0as"]
+
+[node name="fat_greeting" type="Node2D"]
+script = ExtResource("1_dd1oj")
+
+[node name="fat" type="Sprite2D" parent="."]
+position = Vector2(889, 327)
+scale = Vector2(-1, 1)
+texture = ExtResource("1_1e2vk")
+
+[node name="door_left" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(574.5, 324)
+scale = Vector2(0.771333, 0.931429)
+texture = ExtResource("2_w7mbn")
+
+[node name="door_right" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(842.12, 327.971)
+scale = Vector2(0.639833, 1.03134)
+texture = ExtResource("3_taic8")
+
+[node name="Dialouge" parent="." instance=ExtResource("5_vg0as")]
+z_index = 14
