@@ -15,7 +15,7 @@ var menu_scene = preload("res://menu.tscn")
 
 
 func _ready():
-	_on_load_dog()
+	_on_load_menu()
 
 
 func clear_scene():
