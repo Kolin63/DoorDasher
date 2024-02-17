@@ -5,12 +5,8 @@ res://FirstBossFight.tscn
 res://BossFightTwo.tscn
 res://BossFight3.tscn
 res://death_scene.tscn
-res://main.gd
-res://road.tscn
-res://Player.gd
-res://road.gd
-res://RoadSprite.gd
-res://Main.gd
-res://menu.tscn
-res://menu.gd
-res://FirstBossFight.gd
+res://Dog.tscn
+res://Discord_Mod_the_hut.tscn
+res://Pizza_Police.tscn
+res://Poop.tscn
+res://pinnapple.tscn

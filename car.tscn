@@ -8,10 +8,7 @@ radius = 75.0
 height = 176.0
 
 [node name="Car" type="Area2D"]
-visible = false
-z_index = 2
-position = Vector2(1756, -171)
-rotation = -1.5708
+position = Vector2(571, -105)
 script = ExtResource("1_1u3ex")
 metadata/_edit_group_ = true
 
