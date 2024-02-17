@@ -1,22 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://85rppqt177jy"]
+[gd_scene load_steps=3 format=3 uid="uid://85rppqt177jy"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_ggmgi"]
+[ext_resource type="Texture2D" uid="uid://b6lxgj5qwx34" path="res://art/doordashlogo.png" id="2_7kyop"]
 
 [node name="menu" type="Node2D"]
 script = ExtResource("1_ggmgi")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 473.0
-offset_top = 77.0
-offset_right = 731.0
-offset_bottom = 120.0
-text = "among us sussy baka"
+[node name="Background" type="ColorRect" parent="."]
+z_index = -1
+offset_right = 1169.0
+offset_bottom = 664.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("2_7kyop")
 
 [node name="StartButton" type="Button" parent="."]
+z_index = 4
 offset_left = 533.0
-offset_top = 267.0
-offset_right = 579.0
-offset_bottom = 298.0
+offset_top = 416.0
+offset_right = 666.0
+offset_bottom = 495.0
 text = "Start"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
