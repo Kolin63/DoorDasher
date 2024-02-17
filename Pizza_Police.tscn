@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpnvdb4g0lie0"]
+[gd_scene load_steps=2 format=3 uid="uid://c5wkpidt6k0hx"]
 
-[ext_resource type="Texture2D" path="res://art/police.png" id="1_q23cy"]
+[ext_resource type="Texture2D" uid="uid://d0i2k555l7b5j" path="res://art/police.png" id="1_q23cy"]
 
 [node name="Police" type="Sprite2D"]
 position = Vector2(320, 260)

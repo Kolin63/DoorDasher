@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://beauwempgsj34"]
 
-[ext_resource type="Texture2D" path="res://art/fatguy.png" id="1_1e2vk"]
+[ext_resource type="Texture2D" uid="uid://dkfj16aw46crj" path="res://art/fatguy.png" id="1_1e2vk"]
 [ext_resource type="Script" path="res://fat_greeting.gd" id="1_dd1oj"]
 [ext_resource type="Texture2D" uid="uid://v4pvx7d1ytml" path="res://art/roadsideways.png" id="2_w7mbn"]
 [ext_resource type="Texture2D" uid="uid://dv3kioxvtb52s" path="res://art/Backyard1.png" id="3_taic8"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://BossFightTwo.gd" id="1_oe685"]
 [ext_resource type="PackedScene" uid="uid://k32nnvq80ww8" path="res://player.tscn" id="2_0i6rn"]
 [ext_resource type="PackedScene" uid="uid://d0w857be58eqa" path="res://car.tscn" id="3_lc88q"]
-[ext_resource type="Texture2D" path="res://art/fatguy.png" id="4_og777"]
+[ext_resource type="Texture2D" uid="uid://dkfj16aw46crj" path="res://art/fatguy.png" id="4_og777"]
 [ext_resource type="Script" path="res://fat.gd" id="5_g5v6k"]
 [ext_resource type="Texture2D" uid="uid://v4pvx7d1ytml" path="res://art/roadsideways.png" id="6_iul3c"]
 [ext_resource type="Script" path="res://RoadSprite.gd" id="7_16kwq"]
@@ -67,6 +67,6 @@ color = Color(0, 0.831373, 0.00392157, 1)
 [node name="Dialouge" parent="." instance=ExtResource("9_hq0pm")]
 z_index = 2
 
-[connection signal="timeout" from="PooSpawnTimer" to="." method="_on_car_spawn_timer_timeout"]
 [connection signal="timeout" from="PooSpawnTimer" to="." method="_on_poo_spawn_timer_timeout"]
+[connection signal="timeout" from="PooSpawnTimer" to="." method="_on_car_spawn_timer_timeout"]
 [connection signal="timeout" from="DeathTransitionTimer" to="." method="_on_death_transition_timer_timeout"]

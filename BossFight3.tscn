@@ -1,7 +1,118 @@
-[gd_scene load_steps=2 format=3 uid="uid://belkmoyvv2j2b"]
+[gd_scene load_steps=17 format=3 uid="uid://belkmoyvv2j2b"]
 
-[ext_resource type="Texture2D" uid="uid://dikpxc24urcni" path="res://art/Backyard3.png" id="1_xhouq"]
+[ext_resource type="Script" path="res://BossFight3.gd" id="1_34x3g"]
+[ext_resource type="PackedScene" uid="uid://k32nnvq80ww8" path="res://player.tscn" id="2_mh6tx"]
+[ext_resource type="PackedScene" uid="uid://d0w857be58eqa" path="res://car.tscn" id="3_6kls5"]
+[ext_resource type="Texture2D" uid="uid://bdlpqpu3he5bp" path="res://art/police-Sheet.png" id="4_5xr7i"]
+[ext_resource type="Script" path="res://fat.gd" id="5_3qgsx"]
+[ext_resource type="Texture2D" uid="uid://v4pvx7d1ytml" path="res://art/roadsideways.png" id="6_3hkni"]
+[ext_resource type="Script" path="res://RoadSprite.gd" id="7_efbbv"]
+[ext_resource type="Texture2D" uid="uid://b5ulv5nbkehx0" path="res://art/progressbarframe.png" id="8_4oa6f"]
+[ext_resource type="PackedScene" uid="uid://bloh6tls47nr6" path="res://dialouge.tscn" id="9_mp27d"]
 
-[node name="Backyard3" type="Sprite2D"]
-position = Vector2(477, 329)
-texture = ExtResource("1_xhouq")
+[sub_resource type="SpriteFrames" id="SpriteFrames_i8lta"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"door",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4okf5"]
+atlas = ExtResource("4_5xr7i")
+region = Rect2(1920, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c83ao"]
+atlas = ExtResource("4_5xr7i")
+region = Rect2(1280, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p07y4"]
+atlas = ExtResource("4_5xr7i")
+region = Rect2(640, 0, 640, 640)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0g2s"]
+atlas = ExtResource("4_5xr7i")
+region = Rect2(0, 0, 640, 640)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_secso"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4okf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c83ao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p07y4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0g2s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjnh1"]
+size = Vector2(14, 677)
+
+[node name="Backyard3" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_i8lta")
+animation = &"door"
+script = ExtResource("1_34x3g")
+
+[node name="Player" parent="." instance=ExtResource("2_mh6tx")]
+position = Vector2(950, 87)
+
+[node name="Car" parent="." instance=ExtResource("3_6kls5")]
+
+[node name="PooSpawnTimer" type="Timer" parent="."]
+wait_time = 0.75
+
+[node name="DeathTransitionTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Dog" type="AnimatedSprite2D" parent="."]
+z_index = 5
+position = Vector2(300, 283)
+scale = Vector2(-0.575, 0.575)
+sprite_frames = SubResource("SpriteFrames_secso")
+frame_progress = 0.921422
+script = ExtResource("5_3qgsx")
+
+[node name="RoadSprite" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(643, 324)
+texture = ExtResource("6_3hkni")
+script = ExtResource("7_efbbv")
+
+[node name="ProgressBar" type="Sprite2D" parent="."]
+z_index = 13
+position = Vector2(92, 345)
+texture = ExtResource("8_4oa6f")
+offset = Vector2(0, 50)
+
+[node name="ColorRect" type="ColorRect" parent="ProgressBar"]
+z_index = 3
+offset_left = -10.0
+offset_top = 260.0
+offset_right = 40.0
+offset_bottom = 800.0
+rotation = 3.14159
+color = Color(0, 0.831373, 0.00392157, 1)
+
+[node name="Dialouge" parent="." instance=ExtResource("9_mp27d")]
+z_index = 2
+
+[node name="PineappleChecker" type="Area2D" parent="."]
+
+[node name="PineappleChecker" type="CollisionShape2D" parent="PineappleChecker"]
+position = Vector2(3, 328.5)
+shape = SubResource("RectangleShape2D_gjnh1")
+
+[connection signal="remove_pineapple" from="." to="Car" method="_on_backyard_3_remove_pineapple"]
+[connection signal="timeout" from="PooSpawnTimer" to="." method="_on_poo_spawn_timer_timeout"]
+[connection signal="timeout" from="PooSpawnTimer" to="." method="_on_car_spawn_timer_timeout"]
+[connection signal="timeout" from="DeathTransitionTimer" to="." method="_on_death_transition_timer_timeout"]
+[connection signal="area_entered" from="PineappleChecker" to="." method="_on_pineapple_checker_area_entered"]

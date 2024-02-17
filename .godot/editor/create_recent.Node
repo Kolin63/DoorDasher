@@ -1,3 +1,5 @@
+Area2D
+CollisionShape2D
 Timer
 Sprite2D
 AnimatedSprite2D
@@ -5,6 +7,4 @@ ColorRect
 Label
 PanelContainer
 Button
-Area2D
 StaticBody2D
-CollisionShape2D
