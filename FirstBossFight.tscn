@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://da6c3hmwhwm68"]
+[gd_scene load_steps=16 format=3 uid="uid://da6c3hmwhwm68"]
 
 [ext_resource type="Script" path="res://FirstBossFight.gd" id="2_5lf00"]
 [ext_resource type="Texture2D" uid="uid://v4pvx7d1ytml" path="res://art/roadsideways.png" id="2_a0wn5"]
 [ext_resource type="PackedScene" uid="uid://k32nnvq80ww8" path="res://player.tscn" id="3_l2tbb"]
 [ext_resource type="PackedScene" uid="uid://d0w857be58eqa" path="res://car.tscn" id="4_1o2ij"]
-[ext_resource type="Texture2D" path="res://art/doggy.png" id="5_et2xq"]
-[ext_resource type="Script" path="res://Dog.gd" id="5_h5m0y"]
+[ext_resource type="Texture2D" uid="uid://cavphdjxqx4fk" path="res://art/doggy-Sheet.png" id="4_tag5a"]
+[ext_resource type="Script" path="res://fat.gd" id="5_pe0i0"]
 [ext_resource type="Script" path="res://RoadSprite.gd" id="6_78dy3"]
 [ext_resource type="Texture2D" uid="uid://b5ulv5nbkehx0" path="res://art/progressbarframe.png" id="8_57uyk"]
 [ext_resource type="PackedScene" uid="uid://bloh6tls47nr6" path="res://dialouge.tscn" id="9_rjbxc"]
@@ -18,15 +18,36 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cxpf4"]
-atlas = ExtResource("5_et2xq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5y7si"]
+atlas = ExtResource("4_tag5a")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mvnj"]
+atlas = ExtResource("4_tag5a")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewmi2"]
+atlas = ExtResource("4_tag5a")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2kls"]
+atlas = ExtResource("4_tag5a")
 region = Rect2(0, 0, 320, 320)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_25gwi"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_secso"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cxpf4")
+"texture": SubResource("AtlasTexture_5y7si")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mvnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewmi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2kls")
 }],
 "loop": true,
 "name": &"default",
@@ -53,8 +74,8 @@ wait_time = 2.0
 z_index = 5
 position = Vector2(300, 283)
 scale = Vector2(-1, 1)
-sprite_frames = SubResource("SpriteFrames_25gwi")
-script = ExtResource("5_h5m0y")
+sprite_frames = SubResource("SpriteFrames_secso")
+script = ExtResource("5_pe0i0")
 
 [node name="RoadSprite" type="Sprite2D" parent="."]
 z_index = -100
@@ -82,3 +103,4 @@ z_index = 2
 
 [connection signal="timeout" from="PooSpawnTimer" to="." method="_on_car_spawn_timer_timeout"]
 [connection signal="timeout" from="PooSpawnTimer" to="." method="_on_poo_spawn_timer_timeout"]
+[connection signal="timeout" from="DeathTransitionTimer" to="." method="_on_death_transition_timer_timeout"]

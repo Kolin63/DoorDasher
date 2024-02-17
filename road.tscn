@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3ruq7e7g6lx0"]
+[gd_scene load_steps=8 format=3 uid="uid://b3ruq7e7g6lx0"]
 
 [ext_resource type="Script" path="res://road.gd" id="1_y6ybg"]
 [ext_resource type="PackedScene" uid="uid://k32nnvq80ww8" path="res://player.tscn" id="2_gc7f5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://RoadSprite.gd" id="4_g2v4h"]
 [ext_resource type="PackedScene" uid="uid://d0w857be58eqa" path="res://car.tscn" id="5_yle34"]
 [ext_resource type="Texture2D" uid="uid://b5ulv5nbkehx0" path="res://art/progressbarframe.png" id="6_6nss1"]
+[ext_resource type="PackedScene" uid="uid://bloh6tls47nr6" path="res://dialouge.tscn" id="7_ldpwh"]
 
 [node name="Road" type="Node2D"]
 script = ExtResource("1_y6ybg")
@@ -42,6 +43,8 @@ color = Color(0, 0.831373, 0.00392157, 1)
 
 [node name="DeathTransitionTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="Dialouge" parent="." instance=ExtResource("7_ldpwh")]
 
 [connection signal="playerDied" from="Player" to="RoadSprite" method="_on_player_player_died"]
 [connection signal="playerDied" from="Player" to="Car" method="_on_player_player_died"]

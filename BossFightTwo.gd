@@ -9,6 +9,8 @@ signal road_complete
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$RoadSprite.speed = -500
+	$Player.scale = Vector2(1, -1)
 	$Dialouge.hide_dialouge()
 	playerAlive = true
 	distanceTimeSeconds = 0
@@ -22,8 +24,7 @@ func _process(delta):
 		$Dog.lane = 0
 		$RoadSprite.speed = 0
 		$Dialouge.show_dialouge()
-		$Dialouge.say("Dog", "Whoo! That was tiring. Anyways, its time for my nap. Cya! ")
-		$Player/AnimatedSprite2D.stop()
+		$Dialouge.say("Globby", "Shoot! Now I have significantly less pizzas because I had to \nthrow them at you!\nThis is all your fault! Ughhhh!")
 		if Input.is_action_just_pressed("left_click"):
 			road_complete.emit()
 	
@@ -36,6 +37,7 @@ func _process(delta):
 	if playerAlive:
 		$Player.subwayMove()
 	$ProgressBar/ColorRect.size.y = distanceTimeSeconds / distanceMaxSeconds * 540
+	
 
 func _on_poo_spawn_timer_timeout():
 	var car = car_scene.instantiate()
@@ -61,7 +63,7 @@ func _on_poo_spawn_timer_timeout():
 		if $Dog.lane != 1:
 			$Dog.laneOffset = 216
 		$Dog.lane = 1
-	car.set_texture("poop")
+	car.set_texture("pizza")
 	
 	add_child(car)
 	car.death.connect(_on_car_death)

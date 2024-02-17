@@ -1,9 +1,9 @@
+Timer
+Sprite2D
+AnimatedSprite2D
 ColorRect
 Label
 PanelContainer
-AnimatedSprite2D
-Timer
-Sprite2D
 Button
 Area2D
 StaticBody2D

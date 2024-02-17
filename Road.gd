@@ -1,27 +1,46 @@
 extends Node2D
 var car_scene = preload("res://car.tscn")
-var distanceTimeSeconds
-var distanceMaxSeconds
+var distanceTimeSeconds = 0 
+var distanceMaxSeconds = 1
 var playerAlive
 signal playerDied
+signal road_complete
+var dialougeClosed
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+func setup(maxSeconds):
+	dialougeClosed = false
 	playerAlive = true
 	distanceTimeSeconds = 0
-	distanceMaxSeconds = 30
-	$CarSpawnTimer.start()
+	distanceMaxSeconds = maxSeconds
+	$Dialouge.show_dialouge()
+	$Dialouge.say("", "New Order Received!\nPlotting Course...")
 
 
 func _process(delta):
+	if playerAlive:
+		$Player.subwayMove()
+	$ProgressBar/ColorRect.size.y = distanceTimeSeconds / distanceMaxSeconds * 540
+	if !dialougeClosed:
+		if Input.is_action_just_pressed("left_click"):
+			dialougeClosed = true
+			$Dialouge.hide_dialouge()
+			$CarSpawnTimer.start()
+	else:
+		after_dialouge(delta)
+
+
+
+func after_dialouge(delta):
 	if distanceTimeSeconds <= distanceMaxSeconds && playerAlive:
 		distanceTimeSeconds += 1 * delta
 	if distanceTimeSeconds >= distanceMaxSeconds - 7:
 		$CarSpawnTimer.stop()
+	if distanceTimeSeconds >= distanceMaxSeconds:
+		road_complete.emit()
 		
-	$Player.subwayMove()
-	$ProgressBar/ColorRect.size.y = distanceTimeSeconds / distanceMaxSeconds * 540
+	
+	
 
 func _on_car_spawn_timer_timeout():
 	for i in 2:

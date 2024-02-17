@@ -2,6 +2,9 @@ extends Control
 
 
 func say(name, text):
+	show_dialouge()
+	if name == "":
+		$NameBackground.visible = false
 	$Dialouge.text = text
 	$Name.text = name
 

@@ -19,3 +19,9 @@ res://Car.gd
 res://Dog.gd
 res://dialouge.tscn
 res://dialouge.gd
+res://dog_greeting.tscn
+res://dog_greeting.gd
+res://fat_greeting.tscn
+res://fat_greeting.gd
+res://BossFightTwo.gd
+res://fat.gd
