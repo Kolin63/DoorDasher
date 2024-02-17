@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://da6c3hmwhwm68"]
 
-[ext_resource type="Script" path="res://BossFight3.gd" id="1_jq3ww"]
+[ext_resource type="Script" path="res://FirstBossFight.gd" id="2_5lf00"]
 [ext_resource type="Texture2D" uid="uid://v4pvx7d1ytml" path="res://art/roadsideways.png" id="2_a0wn5"]
 [ext_resource type="PackedScene" uid="uid://k32nnvq80ww8" path="res://player.tscn" id="3_l2tbb"]
 [ext_resource type="PackedScene" uid="uid://d0w857be58eqa" path="res://car.tscn" id="4_1o2ij"]
-[ext_resource type="Texture2D" uid="uid://bdlpqpu3he5bp" path="res://art/police-Sheet.png" id="4_gdit6"]
+[ext_resource type="Texture2D" uid="uid://cavphdjxqx4fk" path="res://art/doggy-Sheet.png" id="4_tag5a"]
 [ext_resource type="Script" path="res://fat.gd" id="5_pe0i0"]
 [ext_resource type="Script" path="res://RoadSprite.gd" id="6_78dy3"]
 [ext_resource type="Texture2D" uid="uid://b5ulv5nbkehx0" path="res://art/progressbarframe.png" id="8_57uyk"]
@@ -18,36 +18,36 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4okf5"]
-atlas = ExtResource("4_gdit6")
-region = Rect2(1920, 0, 640, 640)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty6jq"]
+atlas = ExtResource("4_tag5a")
+region = Rect2(0, 0, 320, 320)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c83ao"]
-atlas = ExtResource("4_gdit6")
-region = Rect2(1280, 0, 640, 640)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffedb"]
+atlas = ExtResource("4_tag5a")
+region = Rect2(320, 0, 320, 320)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p07y4"]
-atlas = ExtResource("4_gdit6")
-region = Rect2(640, 0, 640, 640)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdjpi"]
+atlas = ExtResource("4_tag5a")
+region = Rect2(640, 0, 320, 320)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l0g2s"]
-atlas = ExtResource("4_gdit6")
-region = Rect2(0, 0, 640, 640)
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4ytn"]
+atlas = ExtResource("4_tag5a")
+region = Rect2(960, 0, 320, 320)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_secso"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_f8kuf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4okf5")
+"texture": SubResource("AtlasTexture_ty6jq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c83ao")
+"texture": SubResource("AtlasTexture_ffedb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p07y4")
+"texture": SubResource("AtlasTexture_vdjpi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l0g2s")
+"texture": SubResource("AtlasTexture_e4ytn")
 }],
 "loop": true,
 "name": &"default",
@@ -57,7 +57,7 @@ animations = [{
 [node name="Backyard1" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_i8lta")
 animation = &"door"
-script = ExtResource("1_jq3ww")
+script = ExtResource("2_5lf00")
 
 [node name="Player" parent="." instance=ExtResource("3_l2tbb")]
 position = Vector2(950, 87)
@@ -74,7 +74,7 @@ wait_time = 2.0
 z_index = 5
 position = Vector2(300, 283)
 scale = Vector2(-1, 1)
-sprite_frames = SubResource("SpriteFrames_secso")
+sprite_frames = SubResource("SpriteFrames_f8kuf")
 script = ExtResource("5_pe0i0")
 
 [node name="RoadSprite" type="Sprite2D" parent="."]
