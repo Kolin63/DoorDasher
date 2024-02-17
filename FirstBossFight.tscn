@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://da6c3hmwhwm68"]
+[gd_scene load_steps=5 format=3 uid="uid://da6c3hmwhwm68"]
 
 [ext_resource type="Script" path="res://FirstBossFight.gd" id="2_5lf00"]
+[ext_resource type="Texture2D" uid="uid://v4pvx7d1ytml" path="res://art/roadsideways.png" id="2_a0wn5"]
+[ext_resource type="PackedScene" uid="uid://k32nnvq80ww8" path="res://player.tscn" id="3_l2tbb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i8lta"]
 animations = [{
@@ -11,8 +13,13 @@ animations = [{
 }]
 
 [node name="Backyard1" type="AnimatedSprite2D"]
-position = Vector2(141, 258)
-scale = Vector2(2.85417, 7.9375)
 sprite_frames = SubResource("SpriteFrames_i8lta")
 animation = &"door"
 script = ExtResource("2_5lf00")
+
+[node name="roadsprite" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("2_a0wn5")
+
+[node name="Player" parent="." instance=ExtResource("3_l2tbb")]
+position = Vector2(950, 87)
