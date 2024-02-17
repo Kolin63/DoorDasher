@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://da6c3hmwhwm68"]
+[gd_scene load_steps=13 format=3 uid="uid://da6c3hmwhwm68"]
 
 [ext_resource type="Script" path="res://FirstBossFight.gd" id="2_5lf00"]
 [ext_resource type="Texture2D" uid="uid://v4pvx7d1ytml" path="res://art/roadsideways.png" id="2_a0wn5"]
 [ext_resource type="PackedScene" uid="uid://k32nnvq80ww8" path="res://player.tscn" id="3_l2tbb"]
+[ext_resource type="PackedScene" uid="uid://d0w857be58eqa" path="res://car.tscn" id="4_1o2ij"]
+[ext_resource type="Texture2D" path="res://art/doggy.png" id="5_et2xq"]
+[ext_resource type="Script" path="res://Dog.gd" id="5_h5m0y"]
+[ext_resource type="Script" path="res://RoadSprite.gd" id="6_78dy3"]
+[ext_resource type="Texture2D" uid="uid://b5ulv5nbkehx0" path="res://art/progressbarframe.png" id="8_57uyk"]
+[ext_resource type="PackedScene" uid="uid://bloh6tls47nr6" path="res://dialouge.tscn" id="9_rjbxc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i8lta"]
 animations = [{
@@ -12,14 +18,67 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxpf4"]
+atlas = ExtResource("5_et2xq")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_25gwi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxpf4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Backyard1" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_i8lta")
 animation = &"door"
 script = ExtResource("2_5lf00")
 
-[node name="roadsprite" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
-texture = ExtResource("2_a0wn5")
-
 [node name="Player" parent="." instance=ExtResource("3_l2tbb")]
 position = Vector2(950, 87)
+
+[node name="Car" parent="." instance=ExtResource("4_1o2ij")]
+
+[node name="PooSpawnTimer" type="Timer" parent="."]
+wait_time = 0.75
+
+[node name="DeathTransitionTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Dog" type="AnimatedSprite2D" parent="."]
+z_index = 5
+position = Vector2(300, 283)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_25gwi")
+script = ExtResource("5_h5m0y")
+
+[node name="RoadSprite" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(643, 324)
+texture = ExtResource("2_a0wn5")
+script = ExtResource("6_78dy3")
+
+[node name="ProgressBar" type="Sprite2D" parent="."]
+z_index = 13
+position = Vector2(92, 345)
+texture = ExtResource("8_57uyk")
+offset = Vector2(0, 50)
+
+[node name="ColorRect" type="ColorRect" parent="ProgressBar"]
+z_index = 3
+offset_left = -10.0
+offset_top = 260.0
+offset_right = 40.0
+offset_bottom = 800.0
+rotation = 3.14159
+color = Color(0, 0.831373, 0.00392157, 1)
+
+[node name="Dialouge" parent="." instance=ExtResource("9_rjbxc")]
+z_index = 2
+
+[connection signal="timeout" from="PooSpawnTimer" to="." method="_on_car_spawn_timer_timeout"]
+[connection signal="timeout" from="PooSpawnTimer" to="." method="_on_poo_spawn_timer_timeout"]

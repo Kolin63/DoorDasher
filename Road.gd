@@ -37,6 +37,7 @@ func _on_car_spawn_timer_timeout():
 		elif car._lane > 0:
 			car._lane = 1
 			car.position.y = 108
+		car.set_texture("car")
 		
 		add_child(car)
 		car.death.connect(_on_car_death)

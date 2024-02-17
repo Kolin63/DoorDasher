@@ -32,6 +32,7 @@ func _on_load_dog():
 	clear_scene()
 	scene = dog_scene.instantiate()
 	add_child(scene)
+	scene.playerDied.connect(_on_load_death)
 
 
 func _on_load_fat():

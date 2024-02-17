@@ -15,3 +15,7 @@ res://menu.tscn
 res://menu.gd
 res://FirstBossFight.gd
 res://Pizza_Police.tscn
+res://Car.gd
+res://Dog.gd
+res://dialouge.tscn
+res://dialouge.gd

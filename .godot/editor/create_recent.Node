@@ -1,9 +1,10 @@
-Sprite2D
 ColorRect
-AnimatedSprite2D
-Button
 Label
+PanelContainer
+AnimatedSprite2D
 Timer
+Sprite2D
+Button
 Area2D
 StaticBody2D
 CollisionShape2D
