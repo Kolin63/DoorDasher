@@ -52,5 +52,4 @@ func _on_car_death(carLane):
 
 
 func _on_death_transition_timer_timeout():
-	print("rmeitijeitm")
 	playerDied.emit()

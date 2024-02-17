@@ -13,5 +13,4 @@ func _process(delta):
 
 
 func _on_start_button_pressed():
-	print("pressed")
 	load_road.emit()
