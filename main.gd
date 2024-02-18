@@ -20,7 +20,7 @@ var road_stage
 
 func _ready():
 	_on_load_menu()
-	road_stage = 6
+	road_stage = 1
 
 
 func _process(_delta):
