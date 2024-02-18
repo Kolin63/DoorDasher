@@ -49,8 +49,6 @@ func _on_load_road():
 		scene.setup(40)
 	elif road_stage == 6:
 		_on_load_police_greeting()
-	elif road_stage == 7:
-		_on_load_menu()
 	
 
 
@@ -67,6 +65,7 @@ func _on_road_complete():
 	elif road_stage == 6:
 		_on_load_police_greeting()
 	elif road_stage == 7:
+		road_stage = 1
 		_on_load_menu()
 
 

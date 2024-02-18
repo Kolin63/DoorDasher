@@ -1,14 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://belkmoyvv2j2b"]
+[gd_scene load_steps=19 format=3 uid="uid://belkmoyvv2j2b"]
 
 [ext_resource type="Script" path="res://BossFight3.gd" id="1_34x3g"]
 [ext_resource type="PackedScene" uid="uid://k32nnvq80ww8" path="res://player.tscn" id="2_mh6tx"]
 [ext_resource type="PackedScene" uid="uid://d0w857be58eqa" path="res://car.tscn" id="3_6kls5"]
 [ext_resource type="Texture2D" uid="uid://bdlpqpu3he5bp" path="res://art/police-Sheet.png" id="4_5xr7i"]
 [ext_resource type="Script" path="res://fat.gd" id="5_3qgsx"]
-[ext_resource type="Texture2D" uid="uid://v4pvx7d1ytml" path="res://art/roadsideways.png" id="6_3hkni"]
-[ext_resource type="Script" path="res://RoadSprite.gd" id="7_efbbv"]
+[ext_resource type="Texture2D" uid="uid://rlutyv71tuq4" path="res://art/DesertYard.png" id="6_cimvh"]
+[ext_resource type="Script" path="res://RoadSpriteFat.gd" id="7_4wrdg"]
 [ext_resource type="Texture2D" uid="uid://b5ulv5nbkehx0" path="res://art/progressbarframe.png" id="8_4oa6f"]
 [ext_resource type="PackedScene" uid="uid://bloh6tls47nr6" path="res://dialouge.tscn" id="9_mp27d"]
+[ext_resource type="AudioStream" uid="uid://hpou32nyt310" path="res://music/The_Pizza_Police.mp3" id="10_upwqq"]
+[ext_resource type="Script" path="res://AudioLoop.gd" id="11_mimyr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i8lta"]
 animations = [{
@@ -66,6 +68,7 @@ script = ExtResource("1_34x3g")
 position = Vector2(950, 87)
 
 [node name="Car" parent="." instance=ExtResource("3_6kls5")]
+position = Vector2(494, -107)
 
 [node name="PooSpawnTimer" type="Timer" parent="."]
 wait_time = 0.75
@@ -83,9 +86,17 @@ script = ExtResource("5_3qgsx")
 
 [node name="RoadSprite" type="Sprite2D" parent="."]
 z_index = -100
-position = Vector2(643, 324)
-texture = ExtResource("6_3hkni")
-script = ExtResource("7_efbbv")
+position = Vector2(802, 324)
+texture = ExtResource("6_cimvh")
+script = ExtResource("7_4wrdg")
+
+[node name="RoadSprite2" type="Sprite2D" parent="RoadSprite"]
+position = Vector2(-960, 0)
+texture = ExtResource("6_cimvh")
+
+[node name="RoadSprite3" type="Sprite2D" parent="RoadSprite"]
+position = Vector2(-1920, 0)
+texture = ExtResource("6_cimvh")
 
 [node name="ProgressBar" type="Sprite2D" parent="."]
 z_index = 13
@@ -111,8 +122,14 @@ z_index = 2
 position = Vector2(3, 328.5)
 shape = SubResource("RectangleShape2D_gjnh1")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_upwqq")
+autoplay = true
+script = ExtResource("11_mimyr")
+
 [connection signal="remove_pineapple" from="." to="Car" method="_on_backyard_3_remove_pineapple"]
 [connection signal="timeout" from="PooSpawnTimer" to="." method="_on_poo_spawn_timer_timeout"]
 [connection signal="timeout" from="PooSpawnTimer" to="." method="_on_car_spawn_timer_timeout"]
 [connection signal="timeout" from="DeathTransitionTimer" to="." method="_on_death_transition_timer_timeout"]
 [connection signal="area_entered" from="PineappleChecker" to="." method="_on_pineapple_checker_area_entered"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

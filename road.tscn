@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3ruq7e7g6lx0"]
+[gd_scene load_steps=10 format=3 uid="uid://b3ruq7e7g6lx0"]
 
 [ext_resource type="Script" path="res://road.gd" id="1_y6ybg"]
 [ext_resource type="PackedScene" uid="uid://k32nnvq80ww8" path="res://player.tscn" id="2_gc7f5"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://d0w857be58eqa" path="res://car.tscn" id="5_yle34"]
 [ext_resource type="Texture2D" uid="uid://b5ulv5nbkehx0" path="res://art/progressbarframe.png" id="6_6nss1"]
 [ext_resource type="PackedScene" uid="uid://bloh6tls47nr6" path="res://dialouge.tscn" id="7_ldpwh"]
+[ext_resource type="AudioStream" uid="uid://d4glcku6dqvot" path="res://music/Biking.mp3" id="8_orf5n"]
+[ext_resource type="Script" path="res://AudioLoop.gd" id="9_36w20"]
 
 [node name="Road" type="Node2D"]
 script = ExtResource("1_y6ybg")
@@ -42,12 +44,17 @@ rotation = 3.14159
 color = Color(0, 0.831373, 0.00392157, 1)
 
 [node name="DeathTransitionTimer" type="Timer" parent="."]
-wait_time = 2.0
 
 [node name="Dialouge" parent="." instance=ExtResource("7_ldpwh")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_orf5n")
+autoplay = true
+script = ExtResource("9_36w20")
 
 [connection signal="playerDied" from="Player" to="RoadSprite" method="_on_player_player_died"]
 [connection signal="playerDied" from="Player" to="Car" method="_on_player_player_died"]
 [connection signal="death" from="Car" to="." method="_on_car_death"]
 [connection signal="timeout" from="CarSpawnTimer" to="." method="_on_car_spawn_timer_timeout"]
 [connection signal="timeout" from="DeathTransitionTimer" to="." method="_on_death_transition_timer_timeout"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

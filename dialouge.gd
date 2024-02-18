@@ -14,6 +14,8 @@ func show_dialouge():
 	$Name.visible = true
 	$Background.visible = true
 	$NameBackground.visible = true
+	$Instructions.visible = true
+	$InstructionsBackground.visible = true
 	
 
 func hide_dialouge():
@@ -21,3 +23,5 @@ func hide_dialouge():
 	$Name.visible = false
 	$Background.visible = false
 	$NameBackground.visible = false
+	$Instructions.visible = false
+	$InstructionsBackground.visible = false

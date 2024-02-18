@@ -1,14 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvuka81232cep"]
+[gd_scene load_steps=13 format=3 uid="uid://cvuka81232cep"]
 
 [ext_resource type="Script" path="res://BossFightTwo.gd" id="1_oe685"]
 [ext_resource type="PackedScene" uid="uid://k32nnvq80ww8" path="res://player.tscn" id="2_0i6rn"]
 [ext_resource type="PackedScene" uid="uid://d0w857be58eqa" path="res://car.tscn" id="3_lc88q"]
 [ext_resource type="Texture2D" uid="uid://dkfj16aw46crj" path="res://art/fatguy.png" id="4_og777"]
 [ext_resource type="Script" path="res://fat.gd" id="5_g5v6k"]
-[ext_resource type="Texture2D" uid="uid://v4pvx7d1ytml" path="res://art/roadsideways.png" id="6_iul3c"]
-[ext_resource type="Script" path="res://RoadSprite.gd" id="7_16kwq"]
+[ext_resource type="Texture2D" uid="uid://c8yon1wtoacx1" path="res://art/BadYard.png" id="6_33rn0"]
+[ext_resource type="Script" path="res://RoadSpriteFat.gd" id="7_rlhhm"]
 [ext_resource type="Texture2D" uid="uid://b5ulv5nbkehx0" path="res://art/progressbarframe.png" id="8_lahyc"]
 [ext_resource type="PackedScene" uid="uid://bloh6tls47nr6" path="res://dialouge.tscn" id="9_hq0pm"]
+[ext_resource type="AudioStream" uid="uid://lb4so40vex0q" path="res://music/The_Fat_Guy.mp3" id="10_5oymb"]
+[ext_resource type="Script" path="res://AudioLoop.gd" id="11_k3ke0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nrfd1"]
 animations = [{
@@ -45,9 +47,17 @@ script = ExtResource("5_g5v6k")
 
 [node name="RoadSprite" type="Sprite2D" parent="."]
 z_index = -100
-position = Vector2(643, 324)
-texture = ExtResource("6_iul3c")
-script = ExtResource("7_16kwq")
+position = Vector2(1762, 324)
+texture = ExtResource("6_33rn0")
+script = ExtResource("7_rlhhm")
+
+[node name="RoadSprite2" type="Sprite2D" parent="RoadSprite"]
+position = Vector2(-960, 0)
+texture = ExtResource("6_33rn0")
+
+[node name="RoadSprite3" type="Sprite2D" parent="RoadSprite"]
+position = Vector2(-1920, 0)
+texture = ExtResource("6_33rn0")
 
 [node name="ProgressBar" type="Sprite2D" parent="."]
 z_index = 13
@@ -67,6 +77,12 @@ color = Color(0, 0.831373, 0.00392157, 1)
 [node name="Dialouge" parent="." instance=ExtResource("9_hq0pm")]
 z_index = 2
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_5oymb")
+autoplay = true
+script = ExtResource("11_k3ke0")
+
 [connection signal="timeout" from="PooSpawnTimer" to="." method="_on_poo_spawn_timer_timeout"]
 [connection signal="timeout" from="PooSpawnTimer" to="." method="_on_car_spawn_timer_timeout"]
 [connection signal="timeout" from="DeathTransitionTimer" to="." method="_on_death_transition_timer_timeout"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

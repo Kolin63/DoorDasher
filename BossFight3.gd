@@ -16,6 +16,7 @@ var dialouge_stage = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$DeathTransitionTimer.stop()
 	$Dialouge.say("", "Pineapple launcher equipped.\nPress and hold space or left-click to fire.")
 	$ProgressBar/ColorRect.size.y = 0
 	dialouge_closed = false
@@ -61,7 +62,7 @@ func after_dialouge(delta):
 			time_since_last_shot = 0
 			var car = car_scene.instantiate()
 			car.visible = true
-			car.position.x = $Player.position.x
+			car.position.x = $Player.position.x - 200
 			car.set_lane($Player.lane)
 			if car._lane < 0:
 				pineapples_bottom += 1
@@ -134,7 +135,7 @@ func _on_poo_spawn_timer_timeout():
 
 
 func _on_car_death(carLane):
-	if carLane == $Player.lane && time_since_last_shot >= 0.5:
+	if carLane == $Player.lane:
 		$RoadSprite.speed = 0
 		$Player/AnimatedSprite2D.animation = "death"
 		playerAlive = false

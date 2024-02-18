@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://85rppqt177jy"]
+[gd_scene load_steps=6 format=3 uid="uid://85rppqt177jy"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_ggmgi"]
 [ext_resource type="Texture2D" uid="uid://b6lxgj5qwx34" path="res://art/doordashlogo.png" id="2_7kyop"]
+[ext_resource type="AudioStream" uid="uid://b7wqsxehppud4" path="res://music/Main_Menu.mp3" id="3_1a4m1"]
+[ext_resource type="FontFile" uid="uid://hr72q1o6twp" path="res://fonts/PlayfairDisplay-Regular.ttf" id="3_krhxn"]
+[ext_resource type="Script" path="res://AudioLoop.gd" id="3_yj17n"]
 
 [node name="menu" type="Node2D"]
 script = ExtResource("1_ggmgi")
@@ -13,16 +16,43 @@ offset_bottom = 664.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1a4m1")
+autoplay = true
+script = ExtResource("3_yj17n")
+
+[node name="top" type="Label" parent="."]
+offset_left = 424.0
+offset_top = 132.0
+offset_right = 774.0
+offset_bottom = 192.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_krhxn")
+theme_override_font_sizes/font_size = 40
+text = "A day in the life of a"
+
+[node name="bottom" type="Label" parent="."]
+offset_left = 494.0
+offset_top = 351.0
+offset_right = 670.0
+offset_bottom = 406.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_krhxn")
+theme_override_font_sizes/font_size = 40
+text = "Employee"
+
 [node name="Logo" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
+position = Vector2(603, 283)
 texture = ExtResource("2_7kyop")
 
-[node name="StartButton" type="Button" parent="."]
-z_index = 4
-offset_left = 533.0
-offset_top = 416.0
-offset_right = 666.0
-offset_bottom = 495.0
-text = "Start"
+[node name="start" type="Label" parent="."]
+offset_left = 409.0
+offset_top = 547.0
+offset_right = 805.0
+offset_bottom = 602.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_krhxn")
+theme_override_font_sizes/font_size = 40
+text = "[ Press Space to Start ]"
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

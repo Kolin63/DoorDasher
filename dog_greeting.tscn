@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://hru5hfubeh6y"]
+[gd_scene load_steps=10 format=3 uid="uid://hru5hfubeh6y"]
 
 [ext_resource type="Texture2D" uid="uid://cavphdjxqx4fk" path="res://art/doggy-Sheet.png" id="1_4h15q"]
 [ext_resource type="Script" path="res://dog_greeting.gd" id="1_mi1ua"]
-[ext_resource type="Texture2D" uid="uid://dv3kioxvtb52s" path="res://art/Backyard1.png" id="3_kfmuq"]
-[ext_resource type="Texture2D" uid="uid://v4pvx7d1ytml" path="res://art/roadsideways.png" id="3_m20fd"]
+[ext_resource type="Texture2D" uid="uid://dy5jqc00ybcat" path="res://art/doorleft.png" id="3_bygby"]
 [ext_resource type="PackedScene" uid="uid://bloh6tls47nr6" path="res://dialouge.tscn" id="4_4aw3g"]
+[ext_resource type="Texture2D" uid="uid://b6tdndl8ijfth" path="res://art/doorclosed.png" id="4_15864"]
+[ext_resource type="Texture2D" uid="uid://dacfd7isf27g7" path="res://art/doorright.png" id="4_ldn86"]
+[ext_resource type="Texture2D" path="res://art/Pizza.png" id="7_chxjw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6hk2a"]
 atlas = ExtResource("1_4h15q")
@@ -24,22 +26,35 @@ animations = [{
 [node name="DogGreeting" type="Node2D"]
 script = ExtResource("1_mi1ua")
 
-[node name="Dog" type="AnimatedSprite2D" parent="."]
-position = Vector2(450, 349)
-scale = Vector2(-1, 1)
-sprite_frames = SubResource("SpriteFrames_d086c")
-
 [node name="DoorLeft" type="Sprite2D" parent="."]
 z_index = -3
-position = Vector2(576, 349)
-scale = Vector2(0.766667, 1.265)
-texture = ExtResource("3_m20fd")
+position = Vector2(600, 314)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("3_bygby")
 
 [node name="DoorRight" type="Sprite2D" parent="."]
 z_index = 6
-position = Vector2(872, 349)
-scale = Vector2(0.589583, 1.265)
-texture = ExtResource("3_kfmuq")
+position = Vector2(599, 314)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("4_ldn86")
+
+[node name="DoorClosed" type="Sprite2D" parent="."]
+visible = false
+z_index = 8
+position = Vector2(576, 324)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("4_15864")
 
 [node name="Dialouge" parent="." instance=ExtResource("4_4aw3g")]
 z_index = 24
+
+[node name="Dog" type="AnimatedSprite2D" parent="."]
+position = Vector2(707, 355)
+rotation = 3.14159
+scale = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_d086c")
+
+[node name="Pizza" type="Sprite2D" parent="."]
+position = Vector2(622, 344)
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("7_chxjw")

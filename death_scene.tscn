@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://38e8f1ejd7wu"]
+[gd_scene load_steps=4 format=3 uid="uid://38e8f1ejd7wu"]
 
 [ext_resource type="Texture2D" uid="uid://d2ii7xhyuci8n" path="res://art/DeathScene.png" id="1_ad4rk"]
 [ext_resource type="Script" path="res://death_scene.gd" id="2_6i2s4"]
+[ext_resource type="FontFile" uid="uid://d1h8l3ivt5f7d" path="res://fonts/PlayfairDisplay-BoldItalic.ttf" id="3_06gjh"]
 
 [node name="DeathScene" type="Sprite2D"]
 position = Vector2(572, 344)
 scale = Vector2(1.24, 1.24)
 texture = ExtResource("1_ad4rk")
 script = ExtResource("2_6i2s4")
+
+[node name="Instructions" type="Label" parent="."]
+offset_left = -135.484
+offset_top = -141.129
+offset_right = 168.516
+offset_bottom = -106.129
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_06gjh")
+theme_override_font_sizes/font_size = 25
+text = "\" Press Space to Continue \""

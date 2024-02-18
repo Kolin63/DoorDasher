@@ -1,30 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdiklbxe5mo5v"]
+[gd_scene load_steps=7 format=3 uid="uid://bdiklbxe5mo5v"]
 
 [ext_resource type="Script" path="res://police_greeting.gd" id="1_giwlj"]
 [ext_resource type="Texture2D" uid="uid://boo3ut1arja5j" path="res://art/policenobaton.png" id="1_op3dq"]
-[ext_resource type="Texture2D" uid="uid://v4pvx7d1ytml" path="res://art/roadsideways.png" id="2_xvtjq"]
-[ext_resource type="Texture2D" uid="uid://dv3kioxvtb52s" path="res://art/Backyard1.png" id="3_kkm7x"]
+[ext_resource type="Texture2D" uid="uid://dy5jqc00ybcat" path="res://art/doorleft.png" id="4_f5n77"]
 [ext_resource type="PackedScene" uid="uid://bloh6tls47nr6" path="res://dialouge.tscn" id="4_uaeph"]
+[ext_resource type="Texture2D" uid="uid://dacfd7isf27g7" path="res://art/doorright.png" id="5_qnqx8"]
+[ext_resource type="Texture2D" uid="uid://b6tdndl8ijfth" path="res://art/doorclosed.png" id="6_01p18"]
 
 [node name="police_greeting" type="Node2D"]
 script = ExtResource("1_giwlj")
 
+[node name="Dialouge" parent="." instance=ExtResource("4_uaeph")]
+z_index = 140
+
+[node name="DoorLeft" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(600, 314)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("4_f5n77")
+
+[node name="DoorRight" type="Sprite2D" parent="."]
+z_index = 6
+position = Vector2(599, 314)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("5_qnqx8")
+
 [node name="police" type="Sprite2D" parent="."]
-position = Vector2(889, 327)
-scale = Vector2(-1, 1)
+position = Vector2(1234, 311)
+rotation = 3.14159
+scale = Vector2(1, -1)
 texture = ExtResource("1_op3dq")
 
-[node name="door_left" type="Sprite2D" parent="."]
-z_index = -3
-position = Vector2(574.5, 324)
-scale = Vector2(0.771333, 0.931429)
-texture = ExtResource("2_xvtjq")
-
-[node name="door_right" type="Sprite2D" parent="."]
-z_index = 5
-position = Vector2(842.12, 327.971)
-scale = Vector2(0.639833, 1.03134)
-texture = ExtResource("3_kkm7x")
-
-[node name="Dialouge" parent="." instance=ExtResource("4_uaeph")]
-z_index = 14
+[node name="DoorClosed" type="Sprite2D" parent="."]
+z_index = 8
+position = Vector2(576, 324)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("6_01p18")

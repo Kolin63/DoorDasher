@@ -1,14 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://da6c3hmwhwm68"]
+[gd_scene load_steps=19 format=3 uid="uid://da6c3hmwhwm68"]
 
 [ext_resource type="Script" path="res://FirstBossFight.gd" id="2_5lf00"]
-[ext_resource type="Texture2D" uid="uid://v4pvx7d1ytml" path="res://art/roadsideways.png" id="2_a0wn5"]
 [ext_resource type="PackedScene" uid="uid://k32nnvq80ww8" path="res://player.tscn" id="3_l2tbb"]
 [ext_resource type="PackedScene" uid="uid://d0w857be58eqa" path="res://car.tscn" id="4_1o2ij"]
 [ext_resource type="Texture2D" uid="uid://cavphdjxqx4fk" path="res://art/doggy-Sheet.png" id="4_tag5a"]
 [ext_resource type="Script" path="res://fat.gd" id="5_pe0i0"]
-[ext_resource type="Script" path="res://RoadSprite.gd" id="6_78dy3"]
+[ext_resource type="Texture2D" uid="uid://bje553gqrmfa6" path="res://art/3rdYard.png" id="6_y02et"]
+[ext_resource type="Script" path="res://RoadSprite2Yards.gd" id="7_frctp"]
 [ext_resource type="Texture2D" uid="uid://b5ulv5nbkehx0" path="res://art/progressbarframe.png" id="8_57uyk"]
 [ext_resource type="PackedScene" uid="uid://bloh6tls47nr6" path="res://dialouge.tscn" id="9_rjbxc"]
+[ext_resource type="AudioStream" uid="uid://rgim6ufi4360" path="res://music/Doggo.mp3" id="10_mie1l"]
+[ext_resource type="Script" path="res://AudioLoop.gd" id="11_a4o4b"]
+[ext_resource type="Texture2D" path="res://art/Pizza.png" id="12_pgrni"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i8lta"]
 animations = [{
@@ -70,18 +73,20 @@ wait_time = 0.75
 [node name="DeathTransitionTimer" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="Dog" type="AnimatedSprite2D" parent="."]
-z_index = 5
-position = Vector2(300, 283)
-scale = Vector2(-1, 1)
-sprite_frames = SubResource("SpriteFrames_f8kuf")
-script = ExtResource("5_pe0i0")
-
 [node name="RoadSprite" type="Sprite2D" parent="."]
 z_index = -100
-position = Vector2(643, 324)
-texture = ExtResource("2_a0wn5")
-script = ExtResource("6_78dy3")
+position = Vector2(800, 324)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("6_y02et")
+script = ExtResource("7_frctp")
+
+[node name="RoadSprite2" type="Sprite2D" parent="RoadSprite"]
+position = Vector2(-960, 0)
+texture = ExtResource("6_y02et")
+
+[node name="RoadSprite3" type="Sprite2D" parent="RoadSprite"]
+position = Vector2(-1920, 0)
+texture = ExtResource("6_y02et")
 
 [node name="ProgressBar" type="Sprite2D" parent="."]
 z_index = 13
@@ -101,6 +106,25 @@ color = Color(0, 0.831373, 0.00392157, 1)
 [node name="Dialouge" parent="." instance=ExtResource("9_rjbxc")]
 z_index = 2
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_mie1l")
+autoplay = true
+script = ExtResource("11_a4o4b")
+
+[node name="Dog" type="AnimatedSprite2D" parent="."]
+z_index = 5
+position = Vector2(300, 283)
+rotation = 3.14159
+scale = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_f8kuf")
+script = ExtResource("5_pe0i0")
+
+[node name="Pizza" type="Sprite2D" parent="Dog"]
+position = Vector2(97, 0)
+scale = Vector2(0.745, 0.745)
+texture = ExtResource("12_pgrni")
+
 [connection signal="timeout" from="PooSpawnTimer" to="." method="_on_poo_spawn_timer_timeout"]
 [connection signal="timeout" from="PooSpawnTimer" to="." method="_on_car_spawn_timer_timeout"]
 [connection signal="timeout" from="DeathTransitionTimer" to="." method="_on_death_transition_timer_timeout"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

@@ -46,6 +46,23 @@ z_index = -5
 layout_mode = 0
 offset_left = 229.0
 offset_top = 490.0
-offset_right = 382.0
+offset_right = 479.0
 offset_bottom = 542.0
 color = Color(0, 0, 0, 1)
+
+[node name="InstructionsBackground" type="ColorRect" parent="."]
+z_index = -9
+layout_mode = 0
+offset_left = 532.0
+offset_top = 490.0
+offset_right = 821.0
+offset_bottom = 542.0
+color = Color(0, 0, 0, 1)
+
+[node name="Instructions" type="Label" parent="."]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 499.0
+offset_right = 736.0
+offset_bottom = 522.0
+text = "Press Space to Continue"

@@ -34,7 +34,7 @@ func _process(delta):
 func after_dialouge(delta):
 	if distanceTimeSeconds <= distanceMaxSeconds && playerAlive:
 		distanceTimeSeconds += 1 * delta
-	if distanceTimeSeconds >= distanceMaxSeconds - 7:
+	if distanceTimeSeconds >= distanceMaxSeconds - 5:
 		$CarSpawnTimer.stop()
 	if distanceTimeSeconds >= distanceMaxSeconds:
 		$Dialouge.say("", "Destination Arrived!")
